@@ -5,7 +5,7 @@ then
    IPADDRESS="192.168.100.250"
    GWADDRESS="192.168.100.1"
    NWMASK="255.255.255.0"
-   SSHPORT="1997"
+   SSHPORT="22"
 
    #Update packages
    yum update -y
