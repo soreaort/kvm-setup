@@ -1,6 +1,12 @@
-#!/bin/bash   
+#!/bin/bash -x
 if [ $(id -u) == 0 ]
 then
+   #Define variables
+   IPADDRESS="192.168.100.250"
+   GWADDRESS="192.168.100.1"
+   NWMASK="255.255.255.0"
+   SSHPORT="1997"
+
    #Update packages
    yum update -y
 
@@ -19,9 +25,6 @@ then
    systemctl disable NetworkManager
    systemctl enable network
  
-   #Import variables
-   source $PWD/init.conf
-
    #Create ifcfg-enp2s0
    cat > /etc/sysconfig/network-scripts/ifcfg-enp2s0 <<EOF
 DEVICE=enp2s0
@@ -59,7 +62,7 @@ EOF
       yum install -y policycoreutils-python
       sed 's/#Port 22/Port '$SSHPORT'/' -i /etc/ssh/sshd_config
       #Disable remotely root login
-      sed 's/#PermitRootLogin yes/PermitRootLogin no/' -i /etc/ssh/sshd_config
+      sed -E 's/#?PermitRootLogin yes/PermitRootLogin no/' -i /etc/ssh/sshd_config
       semanage port -a -t ssh_port_t -p tcp $SSHPORT
       systemctl restart sshd
 
