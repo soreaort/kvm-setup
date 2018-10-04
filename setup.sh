@@ -11,7 +11,7 @@ then
    yum update -y
 
    #Install some admin tools
-   yum install -y vim git net-tools lsof nc firewalld rsync sysstat bind-utils
+   yum install -y vim git net-tools lsof nc firewalld rsync sysstat bind-utils tree
 
    #Install libvirt and qemu-kvm
    yum install -y qemu-kvm libvirt libvirt-python libguestfs-tools virt-install
