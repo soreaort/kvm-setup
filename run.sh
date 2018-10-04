@@ -1,2 +1,4 @@
-#!/bin/bash   
-ssh -Tq $1 'sudo sh -s' < setup.sh
+#!/bin/bash -x
+USERNAME=$1
+HOST=$2
+ssh -Tq ${USERNAME}@${HOST} 'sudo sh -s' < setup.sh
