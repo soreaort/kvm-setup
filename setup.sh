@@ -60,7 +60,7 @@ EOF
       #Change ssh port and enable it in selinux
       #Below package provides semanage
       yum install -y policycoreutils-python
-      sed 's/#Port 22/Port '$SSHPORT'/' -i /etc/ssh/sshd_config
+      sed -E 's/#?Port.*/Port '$SSHPORT'/' -i /etc/ssh/sshd_config
       #Disable remotely root login
       sed -E 's/#?PermitRootLogin yes/PermitRootLogin no/' -i /etc/ssh/sshd_config
       semanage port -a -t ssh_port_t -p tcp $SSHPORT
@@ -70,6 +70,9 @@ EOF
       firewall-cmd --add-interface=enp2s0 --permanent --zone=public
       firewall-cmd --add-port=$SSHPORT/tcp --permanent --zone=public
       firewall-cmd --reload
+   else
+      sed -E 's/#?Port.*/Port 22/' -i /etc/ssh/sshd_config
+      systemctl restart sshd
    fi
 
 else
