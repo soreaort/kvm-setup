@@ -30,13 +30,13 @@ then
 DEVICE=enp2s0
 ONBOOT=yes 
 NM_CONTROLLED=no
-BRIDGE=virbr0
+BRIDGE=virbr1
 BOOTPROTO=static
 EOF
    
-   #Create ifcfg-virbr0
-   cat > /etc/sysconfig/network-scripts/ifcfg-virbr0 <<EOF
-DEVICE=virbr0
+   #Create ifcfg-virbr1
+   cat > /etc/sysconfig/network-scripts/ifcfg-virbr1 <<EOF
+DEVICE=virbr1
 ONBOOT=yes
 TYPE=Bridge
 BOOTPROTO=static
