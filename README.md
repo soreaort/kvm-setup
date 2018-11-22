@@ -1,4 +1,9 @@
 # kvm-setup
+
+
+On the below blog will be published how to use this script
+https://allit-lpam.blogspot.com
+
 Setup a kvm
 
 Modify below variables on setup.sh accordingly
