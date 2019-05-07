@@ -2,9 +2,12 @@
 if [ $(id -u) == 0 ]
 then
    #Define variables
-   IPADDRESS="192.168.100.250"
+   IPADDRESS="192.168.100.254"
    GWADDRESS="192.168.100.1"
    NWMASK="255.255.255.0"
+   IPADDRESS2="10.0.0.254"
+   GWADDRESS2="10.0.0.1"
+   NWMASK2="255.0.0.0"
    SSHPORT="22"
 
    #Update packages
@@ -33,7 +36,7 @@ NM_CONTROLLED=no
 BRIDGE=virbr1
 BOOTPROTO=static
 EOF
-   
+
    #Create ifcfg-virbr1
    cat > /etc/sysconfig/network-scripts/ifcfg-virbr1 <<EOF
 DEVICE=virbr1
@@ -43,6 +46,26 @@ BOOTPROTO=static
 IPADDR=$IPADDRESS
 GATEWAY=$GWADDRESS
 NETMASK=$NWMASK
+EOF
+
+   #Create ifcfg-enp6s0
+   cat > /etc/sysconfig/network-scripts/ifcfg-enp6s0 <<EOF
+DEVICE=enp6s0
+ONBOOT=yes
+NM_CONTROLLED=no
+BRIDGE=virbr2
+BOOTPROTO=static
+EOF
+
+   #Create ifcfg-virbr2
+   cat > /etc/sysconfig/network-scripts/ifcfg-virbr2 <<EOF
+DEVICE=virbr2
+ONBOOT=yes
+TYPE=Bridge
+BOOTPROTO=static
+IPADDR=$IPADDRESS2
+GATEWAY=$GWADDRESS2
+NETMASK=$NWMASK2
 EOF
 
    #Configure namespaces
