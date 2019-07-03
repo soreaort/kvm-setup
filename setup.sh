@@ -1,13 +1,13 @@
 #!/bin/bash -x
 if [ $(id -u) == 0 ]
 then
-   #Define variables
-   IPADDRESS="10.0.0.254"
-   GWADDRESS="10.0.0.1"
-   NWMASK="255.0.0.0"
-   IPADDRESS2="192.168.100.254"
-   GWADDRESS2="192.168.100.1"
-   NWMASK2="255.255.255.0"
+   #Define variables   
+   IPADDRESS="192.168.100.254"
+   GWADDRESS="192.168.100.1"
+   NWMASK="255.255.255.0"
+   IPADDRESS2="10.0.0.254"
+   GWADDRESS2="10.0.0.1"
+   NWMASK2="255.0.0.0"
    SSHPORT="22"
 
    #Update packages
