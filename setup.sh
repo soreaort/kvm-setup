@@ -17,7 +17,7 @@ then
    yum install -y epel-release vim git net-tools lsof nc firewalld rsync sysstat bind-utils tree fping wget unzip dos2unix
 
    #Install libvirt and qemu-kvm
-   yum install -y qemu-kvm libvirt libvirt-python libguestfs-tools virt-install
+   yum install -y qemu-kvm libvirt libvirt-python libguestfs-tools virt-install qemu-system-x86
 
    #Start and enable libvirtd
    systemctl enable libvirtd
